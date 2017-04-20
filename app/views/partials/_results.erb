@@ -1,6 +1,12 @@
 
 
-<div id="menu1" class="tab-pane fade">
-  <h3><%#=  %></h3>
-  <p></p>
-</div>
+<!-- <div id="menu1" class="tab-pane fade"> -->
+  <% organisms.each do |org| %>
+    <h4><%= org.english_name %></h4>
+    <p>Iconic Taxon: <%= org.iconic_taxon_name %></p>
+    <p>Iconic Taxon Rank: <%= org.iconic_taxon_rank %></p>
+    <p>Taxon: <%= org.taxon_name %></p>
+    <p>Taxon Rank: <%= org.taxon_rank %></p>
+    <p>---------------------------</p>
+  <% end %>
+<!-- </div> -->
