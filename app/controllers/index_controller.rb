@@ -9,18 +9,23 @@ get '/' do
   response = RestClient.get("https://www.inaturalist.org/observations.json")
   parsed_response = JSON.parse(response,:symbolize_names => true)
 
+
   @taxa = []
   parsed_response.each do |creature_hash|
+     if creature_hash[:iconic_taxon] != nil
+       p "ICONIC TAXON"
+       p creature_hash[:iconic_taxon][:name]
+     end
     @taxa << creature_hash[:taxon]
   end
 
+  @taxa.each do |t|
+    if !t.nil?
+      p "*************"
+      p t
+    end
+  end
 
-  # @taxa.each do |t|
-  #   if !t.nil?
-  #     p "*************************"
-  #     p t[:rank]
-  #   end
-  # end
   erb :index
 end
 
