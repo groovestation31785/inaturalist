@@ -5,39 +5,20 @@ require 'json'
 # All of these endpoints should use https://www.inaturalist.org as the base URL, particularly endpoints that require auth.
 
 get '/' do
-  # url = "https://www.inaturalist.org/observations.json?q=#{params['q']}"
   response = RestClient.get("https://www.inaturalist.org/observations.json")
   parsed_response = JSON.parse(response,:symbolize_names => true)
 
-
-  @taxa = []
-  parsed_response.each do |creature_hash|
-     if creature_hash[:iconic_taxon] != nil
-       p "ICONIC TAXON"
-       p creature_hash[:iconic_taxon][:name]
-     end
-    @taxa << creature_hash[:taxon]
-  end
-
-  @taxa.each do |t|
-    if !t.nil?
-      p "*************"
-      p t
+  # organism_options = {}
+  parsed_response.each do |organism_hash|
+    if organism_hash[:taxon] != nil
+      p "TAXON"
+      p organism_hash.fetch(:taxon)
+    end
+    if organism_hash[:iconic_taxon] != nil
+      p "ICONIC"
+      p organism_hash.fetch(:iconic_taxon)
     end
   end
 
   erb :index
 end
-
-# post '/results' do
-#   url = "https://www.inaturalist.org/observations.json?q=#{params['q']}"
-#   response = RestClient.get(url)
-#   parsed_response = JSON.parse(response,:symbolize_names => true)
-#
-#   @taxa = []
-#   parsed_response.each do |creature_hash|
-#     @taxa << creature_hash[:taxon]
-#   end
-#
-#   redirect '/'
-# end
