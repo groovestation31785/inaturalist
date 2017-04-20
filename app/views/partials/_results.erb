@@ -4,11 +4,3 @@
   <h3><%#=  %></h3>
   <p></p>
 </div>
-
-<% taxa.each do |taxon| %>
-  <% if !taxon.nil? %>
-    <% if taxon[:rank] == "species" %>
-      <p> <%= taxon %> </p>
-    <% end %>
-  <% end %>
-<% end %>
