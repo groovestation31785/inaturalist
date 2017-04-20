@@ -8,17 +8,22 @@ get '/' do
   response = RestClient.get("https://www.inaturalist.org/observations.json")
   parsed_response = JSON.parse(response,:symbolize_names => true)
 
-  # organism_options = {}
+  @organisms = []
   parsed_response.each do |organism_hash|
     if organism_hash[:taxon] != nil
-      p "TAXON"
-      p organism_hash.fetch(:taxon)
-    end
-    if organism_hash[:iconic_taxon] != nil
-      p "ICONIC"
-      p organism_hash.fetch(:iconic_taxon)
+      if organism_hash[:iconic_taxon] != nil
+        @organisms << Organism.new(organism_hash)
+      end
     end
   end
+  @organisms
+
+iconic_taxon_names = ["Plantae", "Animalia", "Mollusca", "Reptilia", "Aves", "Amphibia", "Actinopterygii", "Mammalia", "Insecta", "Arachnida", "Fungi", "Protozoa", "Chromista", "Unknown"]
+
+
+iconic_taxon_names.size.times do |name|
+  @organisms.select { |org| org.iconic_taxon_name == iconic_taxon_names[name] }
+end
 
   erb :index
 end
