@@ -7,15 +7,16 @@
   </form>
 </div> -->
 
-
-<!-- <div class="results container">
-
-</div> -->
+    <%= erb :"partials/_results", :layout => false, :locals => { :organisms => @organisms } %>
 
 <div class="container">
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#plantae">Plantae</a></li>
+
+
+    <li><a data-toggle="tab" href="#<%= iconic_taxon_name %>"><%= iconic_taxon_name %></a></li>
+
+
     <li><a data-toggle="tab" href="#animalia">Animalia</a></li>
     <li><a data-toggle="tab" href="#mollusca">Mollusca</a></li>
     <li><a data-toggle="tab" href="#reptilia">Reptilia</a></li>
@@ -33,10 +34,8 @@
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <%#= erb :"partials/_results", :layout => false, :locals => { :taxa => @taxa } %>
 
+    </div>
 
     <!-- <div id="menu2" class="tab-pane fade">
       <h3>Menu 2</h3>
