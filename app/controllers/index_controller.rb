@@ -4,12 +4,18 @@ require 'json'
 
 # All of these endpoints should use https://www.inaturalist.org as the base URL, particularly endpoints that require auth.
 
-base_url = "https://www.inaturalist.org"
-
 get '/' do
-  response = RestClient.get("#{base_url}/observations.json")
-  parsed_response = JSON.parse(response,:symbolize_names => true)
-  puts parsed_response
-
   erb :index
+end
+
+post '/results' do
+  response = RestClient.get("https://www.inaturalist.org/observations.json?q=#{params['query']}")
+  parsed_response = JSON.parse(response,:symbolize_names => true)
+  p params
+  puts "**********************************"
+  parsed_response.each do |hash|
+    puts hash[:taxon]
+    puts hash[:iconic_taxon]
+  end
+  redirect '/'
 end
