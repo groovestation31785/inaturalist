@@ -9,19 +9,15 @@
   font-size: 11px;
   padding: 20px;
   margin-top: 10px;
+  overflow: hidden;
 }
 
-.main {
+.main-container {
   min-height: 555px;
   min-width: 400px;
+  overflow: hidden;
 }
 
 body {
   min-width: 400px;
-}
-
-
-a.best:hover, a.best:active, a.best:link, a.best:visited{
-  color: gold;
-  text-decoration: none;
 }
