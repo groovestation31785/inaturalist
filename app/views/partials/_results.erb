@@ -1,3 +1,7 @@
-<%# taxa.each do |taxon| %>
-  <!-- <p> <%#= taxon %> </p> -->
-<%# end %>
+<% taxa.each do |taxon| %>
+  <% if !taxon.nil? %>
+    <% if taxon[:rank] == "species" %>
+      <p> <%= taxon %> </p>
+    <% end %>
+  <% end %>
+<% end %>
