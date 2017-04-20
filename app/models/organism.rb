@@ -5,22 +5,25 @@ class Organism
   end
 
   def english_name
-    @taxon[:common_name][:name]
+    if @taxon[:common_name] != nil
+      common = @taxon[:common_name]
+      return common[:name] unless nil
+    end
   end
 
   def taxon_name
-    @taxon[:name]
+    return @taxon[:name] unless nil
   end
 
   def taxon_rank
-    @taxon[:rank]
+    return @taxon[:rank] unless nil
   end
 
   def iconic_taxon_name
-    @iconic_taxon[:name]
+    return @iconic_taxon[:name] unless nil
   end
 
   def iconic_taxon_rank
-    @iconic_taxon[:rank]
+    return @iconic_taxon[:rank] unless nil
   end
 end
