@@ -6,6 +6,13 @@ iNaturalist API Project:
 2. Demonstrate understanding of practices around building Sinatra applications.
 3. Show creativity with presenting information that changes in size with every API call. 
 
+### Technologies
+
+1. Back end: Sinatra
+2. Front end: HTML/CSS, Boostrap
+3. Testing: RSpec, Rack-Test, RSpec-HTML-Matchers
+4. Gems: rest-client, json, shotgun
+
 ### Quickstart
 
 1.  `bundle install`
