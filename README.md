@@ -1,30 +1,21 @@
-> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
 
 ### Purpose
-The Sinatra Skeleton:
+iNaturalist API Project:
 
-1. Provides a foundation for building challenges or creating a new Sinatra application.
-2. Demonstrates a reasonable set of practices around building Sinatra applications.
-3. Eases the transition to Rails for Dev Bootcamp students
+1. Display data from iNaturalist API in a single page application. 
+2. Demonstrate understanding of practices around building Sinatra applications.
+3. Show creativity with presenting information that changes in size with every API call. 
 
 ### Quickstart
 
 1.  `bundle install`
-2.  `shotgun config.ru`
+2.  `bundle exec shotgun config.ru`
 
-As needed, create models & migrations with the `rake` tasks:
+### To be continued
 
-```
-rake generate:migration  # Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks
-rake generate:model      # Create an empty model in app/models, e.g., rake generate:model NAME=User
-```
+This simple web application was developed with the span of 48 hours. I was not able to accomplish all the features that I would have wanted. Here is a list of ice box items that I would like to hash out to continue the learning experience:
 
-### Contributing
-
-We would love for you to help make the skeleton more awesome, There are three ways to contribute:
-
-1. Ask for a bug fix or enhancement!
-2. Submit a pull request for a bug fix or enhancement!
-3. Code review an open pull request!
-
-Be prepared to give and receive specific, actionable, and kind feedback!
+1. JavaScript - as of right now, I have no original JavaScript in the project. Bootstrap makes front end features simple. I did not need to do too much when it came to creating the tabs. It would have been a better learning experience for me to create the tabs myself. 
+2. I would learn how to properly test the API calls with Rack Test. In theory, I know how it would work; however actually implementing it correctly is a different story. 
+3. Add simplecov gem to detect my test coverage. The app is simple, but I would still like to track the parts of code that need tests. I know I would overlook areas that need coverage. 
+4. Reactor! I know this is not the driest piece of code out there. I'd look over everything and decide if it's written with the best practices in mind. I'd do more research to determine what type of adjustments I should make. 
