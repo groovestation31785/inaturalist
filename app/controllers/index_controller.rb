@@ -28,5 +28,12 @@ get '/' do
   @iconic_taxon_names
 
 
+  @iconic_taxon_names.each do |taxon|
+     if !taxon.empty?
+       p "*********************"
+       p taxon
+     end
+   end
+
   erb :index
 end
