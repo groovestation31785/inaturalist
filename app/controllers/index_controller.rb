@@ -16,14 +16,17 @@ get '/' do
       end
     end
   end
+
+
+  @iconic_taxon_names = ["Plantae", "Animalia", "Mollusca", "Reptilia", "Aves", "Amphibia", "Actinopterygii", "Mammalia", "Insecta", "Arachnida", "Fungi", "Protozoa", "Chromista", "Unknown"]
+
+  @iconic_taxon_names.size.times do |name|
+    @iconic_taxon_names[name] = @organisms.select { |org| org.iconic_taxon_name == @iconic_taxon_names[name] }
+  end
+
   @organisms
+  @iconic_taxon_names
 
-iconic_taxon_names = ["Plantae", "Animalia", "Mollusca", "Reptilia", "Aves", "Amphibia", "Actinopterygii", "Mammalia", "Insecta", "Arachnida", "Fungi", "Protozoa", "Chromista", "Unknown"]
-
-
-iconic_taxon_names.size.times do |name|
-  @organisms.select { |org| org.iconic_taxon_name == iconic_taxon_names[name] }
-end
 
   erb :index
 end
