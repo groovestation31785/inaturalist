@@ -5,34 +5,35 @@ require 'json'
 # All of these endpoints should use https://www.inaturalist.org as the base URL, particularly endpoints that require auth.
 
 get '/' do
-  # url = "https://www.inaturalist.org/observations.json?q=#{params['q']}"
   response = RestClient.get("https://www.inaturalist.org/observations.json")
   parsed_response = JSON.parse(response,:symbolize_names => true)
 
-  @taxa = []
-  parsed_response.each do |creature_hash|
-    @taxa << creature_hash[:taxon]
-  end
+  @organisms = list_organisms(parsed_response)
+  @iconic_taxon_names = sort_taxon(@organisms)
 
-
-  # @taxa.each do |t|
-  #   if !t.nil?
-  #     p "*************************"
-  #     p t[:rank]
-  #   end
-  # end
   erb :index
 end
 
-# post '/results' do
-#   url = "https://www.inaturalist.org/observations.json?q=#{params['q']}"
-#   response = RestClient.get(url)
-#   parsed_response = JSON.parse(response,:symbolize_names => true)
-#
-#   @taxa = []
-#   parsed_response.each do |creature_hash|
-#     @taxa << creature_hash[:taxon]
-#   end
-#
-#   redirect '/'
-# end
+private
+
+  def list_organisms(json_response)
+    organisms = []
+    json_response.each do |organism_hash|
+      if organism_hash[:taxon] != nil
+        if organism_hash[:iconic_taxon] != nil
+          organisms << Organism.new(organism_hash)
+        end
+      end
+    end
+    organisms
+  end
+
+
+  def sort_taxon(organisms)
+    iconic_taxon_names = ["Plantae", "Animalia", "Mollusca", "Reptilia", "Aves", "Amphibia", "Actinopterygii", "Mammalia", "Insecta", "Arachnida", "Fungi", "Protozoa", "Chromista", "Unknown"]
+
+    iconic_taxon_names.size.times do |name|
+      iconic_taxon_names[name] = organisms.select { |org| org.iconic_taxon_name == iconic_taxon_names[name] }
+    end
+    iconic_taxon_names
+  end

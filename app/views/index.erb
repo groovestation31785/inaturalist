@@ -1,51 +1,36 @@
-<!-- <div class="form-group">
-  <form method="POST" action="/results">
-    <div class="col-lg-6">
-  	  <input class="form-control" type='text' name='q' placeholder="What are you looking for?" />
-  	  <button class="btn btn-success" type='submit'>Submit</button>
-  	</div>
-  </form>
-</div> -->
-
-
-<!-- <div class="results container">
-  <%#= erb :"partials/_results", :layout => false, :locals => { :taxa => @taxa } %>
-</div> -->
-
 <div class="container">
+  <h2>Taxon Info</h2>
+
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">Plantae</a></li>
-    <li><a data-toggle="tab" href="#menu2">Animalia</a></li>
-    <li><a data-toggle="tab" href="#menu3">Mollusca</a></li>
-    <li><a data-toggle="tab" href="#menu4">Reptilia</a></li>
-    <li><a data-toggle="tab" href="#menu5">Aves</a></li>
-    <li><a data-toggle="tab" href="#menu6">Amphibia</a></li>
-    <li><a data-toggle="tab" href="#menu7">Actinopterygii</a></li>
-    <li><a data-toggle="tab" href="#menu8">Mammalia</a></li>
-    <li><a data-toggle="tab" href="#menu9">Insecta</a></li>
-    <li><a data-toggle="tab" href="#menu10">Fungi</a></li>
-    <li><a data-toggle="tab" href="#menu11">Protozoa</a></li>
-    <li><a data-toggle="tab" href="#menu12">Chromista</a></li>
-    <li><a data-toggle="tab" href="#menu13">Unknown</a></li>
+    <li class="active">
+      <a data-toggle="tab" href="#home">Home</a>
+    </li>
+    <% @iconic_taxon_names.each do |taxon| %>
+      <% if !taxon.empty? %>
+        <li>
+          <a data-toggle="tab" href="#<%= taxon.first.iconic_taxon_name %>"><%= taxon.first.iconic_taxon_name %></a>
+        </li>
+      <% end %>
+    <% end %>
   </ul>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-  </div>
+   <div class="tab-content">
+     <div id="home" class="tab-pane fade in active">
+       <p>
+          iNaturalist is a lot of different things, but at its core,
+          iNaturalist is an online social network of people sharing biodiversity information to help each other learn about nature
+          It's also a crowdsourced species identification system and an organism occurrence recording tool. You can use it to record your own observations, get help with identifications, collaborate with others to collect this kind of information for a common purpose, or access the observational data collected by iNaturalist users.
+       </p>
+     </div>
+
+     <% @iconic_taxon_names.each do |taxon| %>
+       <% if !taxon.empty? %>
+         <div id="<%= taxon.first.iconic_taxon_name %>" class="tab-pane fade">
+           <%= erb :"partials/_results", :layout => false, :locals => {:taxon => taxon}  %>
+         </div>
+       <% end %>
+     <% end %>
+   </div>
+
+
 </div>
