@@ -1,9 +1,12 @@
 <div class="results-content">
-  <% taxon.each do |org| %>
-    <h4><%= org.english_name %></h4>
-    <p>Iconic Taxon: <%= org.iconic_taxon_name %></p>
-    <p>Iconic Taxon Rank: <%= org.iconic_taxon_rank %></p>
-    <p>Taxon: <%= org.taxon_name %></p>
-    <p>Taxon Rank: <%= org.taxon_rank %></p>
+  <% taxon.each.with_index do |org, index| %>
+
+      <div class="col-xs-8 col-xs-offset-2 no-break">
+        <h4><%= org.english_name || org.taxon_name %></h4>
+        <p>Iconic Taxon: <%= org.iconic_taxon_name %></p>
+        <p>Iconic Taxon Rank: <%= org.iconic_taxon_rank %></p>
+        <p>Taxon: <%= org.taxon_name %></p>
+        <p>Taxon Rank: <%= org.taxon_rank %></p>
+      </div>
   <% end %>
 </div>
