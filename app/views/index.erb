@@ -8,21 +8,23 @@
     <% @iconic_taxon_names.each do |taxon| %>
       <% if !taxon.empty? %>
         <li>
-          <a data-toggle="tab" href="#<%= taxon.first.iconic_taxon_name %>"><%= taxon[0].iconic_taxon_name %></a>
+          <a data-toggle="tab" href="#<%= taxon.first.iconic_taxon_name %>"><%= taxon.first.iconic_taxon_name %></a>
         </li>
       <% end %>
+    <% end %>
   </ul>
-   <div class="tab-content">
+   <!-- <div class="tab-content">
      <div id="home" class="tab-pane fade in active">
        <p>This is home.</p>
-     </div>
+     </div> -->
 
-     <% if !taxon.empty? %>
-       <div id="<%= taxon.first.iconic_taxon_name %>" class="tab-pane fade">
-         <%= erb :"partials/_results", :layout => false, :locals => {:taxon => taxon}  %>
+     <%# if !taxon.empty? %>
+       <!-- <div id="<%#= taxon.first.iconic_taxon_name %>" class="tab-pane fade">
+         <%#= erb :"partials/_results", :layout => false, :locals => {:taxon => taxon}  %>
        </div>
-       <% end %>
-   <% end %>
+       <%# end %>
+       </div> -->
+   <%# end %>
 
-  </div>
+
 </div>
