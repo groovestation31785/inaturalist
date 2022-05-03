@@ -7,7 +7,7 @@ gem 'pg'
 gem 'json'
 
 # Sinatra driver
-gem 'sinatra', '~> 1.0'
+gem 'sinatra', '~> 2.2'
 gem 'sinatra-contrib'
 
 gem 'activesupport', '~>4.2.0'
